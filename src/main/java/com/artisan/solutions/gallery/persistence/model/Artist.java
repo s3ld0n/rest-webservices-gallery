@@ -1,4 +1,4 @@
-package com.artisan.solutions.gallery.model;
+package com.artisan.solutions.gallery.persistence.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
