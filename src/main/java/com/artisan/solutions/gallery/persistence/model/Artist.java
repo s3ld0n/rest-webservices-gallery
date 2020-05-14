@@ -1,6 +1,5 @@
 package com.artisan.solutions.gallery.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,7 +31,6 @@ public class Artist {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "artist")
     private List<Work> works;
 

@@ -2,7 +2,7 @@ package com.artisan.solutions.gallery.service.defaults;
 
 import com.artisan.solutions.gallery.persistence.model.Artist;
 import com.artisan.solutions.gallery.persistence.repo.ArtistRepo;
-import com.artisan.solutions.gallery.service.Crud;
+import com.artisan.solutions.gallery.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ArtistServiceDefault implements Crud<Artist> {
+public class ArtistServiceDefault implements ArtistService {
 
     private ArtistRepo artistRepo;
 
@@ -19,23 +19,28 @@ public class ArtistServiceDefault implements Crud<Artist> {
         this.artistRepo = artistRepo;
     }
 
+    @Override
     public Artist create(Artist artist) {
         return artistRepo.save(artist);
     }
 
+    @Override
     public Optional<Artist> findById(Long id) {
         return artistRepo.findById(id);
     }
 
+    @Override
     public List<Artist> findAll() {
         return artistRepo.findAll();
     }
 
+    @Override
     public Artist update(Artist artist) {
         return create(artist);
     }
 
-    public void delete(Artist artist) {
-        artistRepo.delete(artist);
+    @Override
+    public void deleteById(Long id) {
+        artistRepo.deleteById(id);
     }
 }

@@ -1,6 +1,5 @@
 package com.artisan.solutions.gallery.persistence.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -20,9 +19,8 @@ public class Work {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @JsonBackReference
-    @ManyToOne
-    @JoinColumn(name = "artist_id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "artist_id", nullable = false)
     private Artist artist;
 
     @Column(name = "title", length = 50, nullable = false)

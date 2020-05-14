@@ -40,7 +40,7 @@ public class WorkServiceDefault implements WorkService {
     }
 
     @Override
-    public void delete(Work work) {
-        workRepo.delete(work);
+    public void deleteById(Long id) {
+        workRepo.deleteById(id);
     }
 }
