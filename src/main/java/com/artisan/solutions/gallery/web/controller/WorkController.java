@@ -30,8 +30,9 @@ public class WorkController {
 
     @GetMapping("/{id}")
     public WorkDto findById(@PathVariable long id) {
-        return DtoConverter.convertWorkToDto(workService.findById(id)
-                                                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        return DtoConverter.convertWorkToDto(
+                workService.findById(id)
+                           .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping

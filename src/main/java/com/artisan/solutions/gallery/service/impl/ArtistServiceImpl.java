@@ -1,4 +1,4 @@
-package com.artisan.solutions.gallery.service.defaults;
+package com.artisan.solutions.gallery.service.impl;
 
 import com.artisan.solutions.gallery.persistence.model.Artist;
 import com.artisan.solutions.gallery.persistence.repo.ArtistRepo;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ArtistServiceDefault implements ArtistService {
+public class ArtistServiceImpl implements ArtistService {
 
     private ArtistRepo artistRepo;
 
     @Autowired
-    public ArtistServiceDefault(ArtistRepo artistRepo) {
+    public ArtistServiceImpl(ArtistRepo artistRepo) {
         this.artistRepo = artistRepo;
     }
 

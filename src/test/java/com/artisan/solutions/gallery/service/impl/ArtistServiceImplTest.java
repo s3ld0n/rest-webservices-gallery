@@ -1,7 +1,7 @@
-package com.artisan.solutions.gallery.service.defaults;
+package com.artisan.solutions.gallery.service.impl;
 
-import com.artisan.solutions.gallery.persistence.model.Work;
-import com.artisan.solutions.gallery.persistence.repo.WorkRepo;
+import com.artisan.solutions.gallery.persistence.model.Artist;
+import com.artisan.solutions.gallery.persistence.repo.ArtistRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -19,22 +19,22 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class WorkServiceDefaultTest {
+class ArtistServiceImplTest {
 
     @InjectMocks
-    private WorkServiceDefault instance;
+    private ArtistServiceImpl instance;
 
     @Mock
-    private Work work1;
+    private ArtistRepo repo;
 
     @Mock
-    private Work work2;
+    private Artist artist1;
 
     @Mock
-    private Work work3;
+    private Artist artist2;
 
     @Mock
-    private WorkRepo repo;
+    private Artist artist3;
 
     @BeforeEach
     void setUp() {
@@ -43,24 +43,24 @@ public class WorkServiceDefaultTest {
 
     @Test
     void create_returnsCreatedObject_and_InvokesRepoSave() {
-        when(repo.save(work1)).thenReturn(work1);
-        assertEquals(work1, instance.create(work1));
-        verify(repo, times(1)).save(work1);
+        when(repo.save(artist1)).thenReturn(artist1);
+        assertEquals(artist1, instance.create(artist1));
+        verify(repo, times(1)).save(artist1);
     }
 
     @Test
     void findById_returnsOptionalWithRequiredObject_and_invokesRepoFindById() {
         Long id = 1L;
-        when(repo.findById(id)).thenReturn(Optional.of(work1));
+        when(repo.findById(id)).thenReturn(Optional.of(artist1));
 
-        assertThat(instance.findById(id).get()).isEqualTo(work1);
+        assertThat(instance.findById(id).get()).isEqualTo(artist1);
         verify(repo, times(1)).findById(id);
     }
 
     @Test
     void findAll_invokesRepoFindAll_and_returnsListOfArtistsOfCorrectSize() {
-        List<Work> works = Arrays.asList(work1, work2, work3);
-        when(repo.findAll()).thenReturn(works);
+        List<Artist> artists = Arrays.asList(artist1, artist2, artist3);
+        when(repo.findAll()).thenReturn(artists);
 
         assertThat(instance.findAll().size()).isEqualTo(3);
         verify(repo, times(1)).findAll();
@@ -68,9 +68,9 @@ public class WorkServiceDefaultTest {
 
     @Test
     void update_invokesRepoSave() {
-        when(repo.save(work1)).thenReturn(work1);
-        instance.update(work1);
-        verify(repo, times(1)).save(work1);
+        when(repo.save(artist1)).thenReturn(artist1);
+        instance.update(artist1);
+        verify(repo, times(1)).save(artist1);
     }
 
     @Test

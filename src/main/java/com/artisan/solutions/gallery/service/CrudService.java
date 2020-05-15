@@ -3,7 +3,7 @@ package com.artisan.solutions.gallery.service;
 import java.util.List;
 import java.util.Optional;
 
-public interface Crud<T> {
+public interface CrudService<T> {
 
     T create(T t);
 

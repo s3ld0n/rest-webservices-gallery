@@ -31,8 +31,8 @@ public class ArtistController {
     @GetMapping("/{id}")
     public ArtistDto findById(@PathVariable long id) {
         return DtoConverter.convertArtistToDto(
-                artistService.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
-                                              );
+                artistService.findById(id)
+                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping

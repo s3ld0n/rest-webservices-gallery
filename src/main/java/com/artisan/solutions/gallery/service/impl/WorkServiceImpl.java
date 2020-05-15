@@ -1,4 +1,4 @@
-package com.artisan.solutions.gallery.service.defaults;
+package com.artisan.solutions.gallery.service.impl;
 
 import com.artisan.solutions.gallery.persistence.model.Work;
 import com.artisan.solutions.gallery.persistence.repo.WorkRepo;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class WorkServiceDefault implements WorkService {
+public class WorkServiceImpl implements WorkService {
 
     private WorkRepo workRepo;
 
     @Autowired
-    public WorkServiceDefault(WorkRepo workRepo) {
+    public WorkServiceImpl(WorkRepo workRepo) {
         this.workRepo = workRepo;
     }
 
