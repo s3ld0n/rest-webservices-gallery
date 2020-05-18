@@ -48,7 +48,6 @@ public class DtoConverter {
     public static WorkDto convertWorkToDto(Work work) {
         return WorkDto.builder()
                       .id(work.getId())
-                      .artistId(work.getArtist().getId())
                       .title(work.getTitle())
                       .dateCreated(work.getDateCreated())
                       .build();
@@ -64,7 +63,6 @@ public class DtoConverter {
         return Work.builder()
                    .dateCreated(workDto.getDateCreated())
                    .id(workDto.getId())
-                   .artist(Artist.builder().id(workDto.getId()).build())
                    .title(workDto.getTitle())
                    .build();
     }

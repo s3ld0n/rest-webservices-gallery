@@ -1,7 +1,7 @@
 package com.artisan.solutions.gallery.service.impl;
 
 import com.artisan.solutions.gallery.persistence.model.Work;
-import com.artisan.solutions.gallery.persistence.repo.WorkRepo;
+import com.artisan.solutions.gallery.persistence.repository.WorkRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ public class WorkServiceImplTest {
     private Work work3;
 
     @Mock
-    private WorkRepo repo;
+    private WorkRepository repo;
 
     @BeforeEach
     void setUp() {

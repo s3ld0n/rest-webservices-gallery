@@ -31,7 +31,7 @@ public class Artist {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "artist")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Work> works;
 
     @Override

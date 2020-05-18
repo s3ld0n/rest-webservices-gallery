@@ -1,7 +1,7 @@
 package com.artisan.solutions.gallery.service.impl;
 
 import com.artisan.solutions.gallery.persistence.model.Artist;
-import com.artisan.solutions.gallery.persistence.repo.ArtistRepo;
+import com.artisan.solutions.gallery.persistence.repository.ArtistRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ class ArtistServiceImplTest {
     private ArtistServiceImpl instance;
 
     @Mock
-    private ArtistRepo repo;
+    private ArtistRepository repo;
 
     @Mock
     private Artist artist1;
