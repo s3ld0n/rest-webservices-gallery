@@ -27,7 +27,9 @@ public class ArtistController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ArtistDto create(@RequestBody ArtistDto artistDto) {
-        return dtoConverter.convertArtistToDto(artistService.create(dtoConverter.convertArtistDtoToEntity(artistDto)));
+        return dtoConverter.convertArtistToDto(
+                artistService.create(
+                        dtoConverter.convertArtistDtoToEntity(artistDto)));
     }
 
     @GetMapping(Constants.ID)

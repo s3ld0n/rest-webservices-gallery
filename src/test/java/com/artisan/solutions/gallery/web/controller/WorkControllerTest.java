@@ -1,8 +1,8 @@
 package com.artisan.solutions.gallery.web.controller;
 
-import com.artisan.solutions.gallery.persistence.model.Artist;
-import com.artisan.solutions.gallery.service.impl.ArtistServiceImpl;
-import com.artisan.solutions.gallery.web.dto.ArtistDto;
+import com.artisan.solutions.gallery.persistence.model.Work;
+import com.artisan.solutions.gallery.service.impl.WorkServiceImpl;
+import com.artisan.solutions.gallery.web.dto.WorkDto;
 import com.artisan.solutions.gallery.web.dto.DtoConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,41 +18,41 @@ import java.util.Optional;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-class ArtistControllerTest {
+class WorkControllerTest {
 
     @InjectMocks
-    private ArtistController instance;
+    private WorkController instance;
 
     @Mock
-    private ArtistServiceImpl artistService;
+    private WorkServiceImpl artistService;
 
     @Mock
     private DtoConverter dtoConverter;
 
     @Mock
-    private Artist artist;
+    private Work work;
 
     @Mock
-    private ArtistDto artistDto;
+    private WorkDto workDto;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        when(dtoConverter.convertArtistToDto(artist)).thenReturn(artistDto);
-        when(dtoConverter.convertArtistDtoToEntity(artistDto)).thenReturn(artist);
+        when(dtoConverter.convertWorkToDto(work)).thenReturn(workDto);
+        when(dtoConverter.convertWorkDtoToEntity(workDto)).thenReturn(work);
     }
 
     @Test
     void create_runs_service_create() {
-        when(artistService.create(artist)).thenReturn(artist);
-        instance.create(artistDto);
-        verify(artistService, times(1)).create(artist);
+        when(artistService.create(work)).thenReturn(work);
+        instance.create(workDto);
+        verify(artistService, times(1)).create(work);
     }
 
     @Test
     void findById_runs_service_findById() {
-        when(artistService.findById(1L)).thenReturn(Optional.of(artist));
+        when(artistService.findById(1L)).thenReturn(Optional.of(work));
 
         instance.findById(1L);
         verify(artistService, times(1)).findById(1L);
@@ -68,9 +68,9 @@ class ArtistControllerTest {
 
     @Test
     void update_runs_service_update() {
-        when(artistService.update(artist)).thenReturn(artist);
-        instance.update(artistDto);
-        verify(artistService, times(1)).update(artist);
+        when(artistService.update(work)).thenReturn(work);
+        instance.update(workDto);
+        verify(artistService, times(1)).update(work);
     }
 
     @Test
