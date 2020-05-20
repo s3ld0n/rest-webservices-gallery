@@ -16,34 +16,36 @@ import java.util.List;
 public class WorkController {
 
     private WorkService workService;
+    private DtoConverter dtoConverter;
 
     @Autowired
-    public WorkController(WorkService workService) {
+    public WorkController(WorkService workService, DtoConverter dtoConverter) {
         this.workService = workService;
+        this.dtoConverter = dtoConverter;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public WorkDto create(@RequestBody WorkDto workDto) {
-        return DtoConverter.convertWorkToDto(workService.create(DtoConverter.convertWorkDtoToEntity(workDto)));
+        return dtoConverter.convertWorkToDto(workService.create(dtoConverter.convertWorkDtoToEntity(workDto)));
     }
 
     @GetMapping(Constants.ID)
     public WorkDto findById(@PathVariable long id) {
-        return DtoConverter.convertWorkToDto(workService
+        return dtoConverter.convertWorkToDto(workService
                                                      .findById(id)
                                                      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping
     public List<WorkDto> findAll() {
-        return DtoConverter.convertAllWorksToDtos(workService.findAll());
+        return dtoConverter.convertAllWorksToDtos(workService.findAll());
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public WorkDto update(@RequestBody WorkDto workDto) {
-        return DtoConverter.convertWorkToDto(workService.update(DtoConverter.convertWorkDtoToEntity(workDto)));
+        return dtoConverter.convertWorkToDto(workService.update(dtoConverter.convertWorkDtoToEntity(workDto)));
     }
 
     @DeleteMapping(Constants.ID)

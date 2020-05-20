@@ -16,34 +16,36 @@ import java.util.List;
 public class ArtistController {
 
     private ArtistService artistService;
+    private DtoConverter dtoConverter;
 
     @Autowired
-    public ArtistController(ArtistService artistService) {
+    public ArtistController(ArtistService artistService, DtoConverter dtoConverter) {
         this.artistService = artistService;
+        this.dtoConverter = dtoConverter;
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ArtistDto create(@RequestBody ArtistDto artistDto) {
-        return DtoConverter.convertArtistToDto(artistService.create(DtoConverter.convertArtistDtoToEntity(artistDto)));
+        return dtoConverter.convertArtistToDto(artistService.create(dtoConverter.convertArtistDtoToEntity(artistDto)));
     }
 
     @GetMapping(Constants.ID)
     public ArtistDto findById(@PathVariable long id) {
-        return DtoConverter.convertArtistToDto(artistService
+        return dtoConverter.convertArtistToDto(artistService
                                                        .findById(id)
                                                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping
     public List<ArtistDto> findAll() {
-        return DtoConverter.convertAllArtistToDtos(artistService.findAll());
+        return dtoConverter.convertAllArtistToDtos(artistService.findAll());
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public ArtistDto update(@RequestBody ArtistDto artistDto) {
-        return DtoConverter.convertArtistToDto(artistService.update(DtoConverter.convertArtistDtoToEntity(artistDto)));
+        return dtoConverter.convertArtistToDto(artistService.update(dtoConverter.convertArtistDtoToEntity(artistDto)));
     }
 
     @DeleteMapping(Constants.ID)
