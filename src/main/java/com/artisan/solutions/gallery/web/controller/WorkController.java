@@ -1,5 +1,6 @@
 package com.artisan.solutions.gallery.web.controller;
 
+import com.artisan.solutions.gallery.configuration.Constants;
 import com.artisan.solutions.gallery.service.WorkService;
 import com.artisan.solutions.gallery.web.dto.DtoConverter;
 import com.artisan.solutions.gallery.web.dto.WorkDto;
@@ -27,7 +28,7 @@ public class WorkController {
         return DtoConverter.convertWorkToDto(workService.create(DtoConverter.convertWorkDtoToEntity(workDto)));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(Constants.ID)
     public WorkDto findById(@PathVariable long id) {
         return DtoConverter.convertWorkToDto(workService
                                                      .findById(id)
@@ -45,7 +46,7 @@ public class WorkController {
         return DtoConverter.convertWorkToDto(workService.update(DtoConverter.convertWorkDtoToEntity(workDto)));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(Constants.ID)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable("id") Long id) {
         workService.deleteById(id);

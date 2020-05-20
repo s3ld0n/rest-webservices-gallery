@@ -1,5 +1,6 @@
 package com.artisan.solutions.gallery.web.controller;
 
+import com.artisan.solutions.gallery.configuration.Constants;
 import com.artisan.solutions.gallery.service.ArtistService;
 import com.artisan.solutions.gallery.web.dto.ArtistDto;
 import com.artisan.solutions.gallery.web.dto.DtoConverter;
@@ -27,7 +28,7 @@ public class ArtistController {
         return DtoConverter.convertArtistToDto(artistService.create(DtoConverter.convertArtistDtoToEntity(artistDto)));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(Constants.ID)
     public ArtistDto findById(@PathVariable long id) {
         return DtoConverter.convertArtistToDto(artistService
                                                        .findById(id)
@@ -45,7 +46,7 @@ public class ArtistController {
         return DtoConverter.convertArtistToDto(artistService.update(DtoConverter.convertArtistDtoToEntity(artistDto)));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(Constants.ID)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable("id") Long id) {
         artistService.deleteById(id);
