@@ -1,6 +1,5 @@
 package com.artisan.solutions.gallery.web.controller;
 
-import com.artisan.solutions.gallery.persistence.model.Work;
 import com.artisan.solutions.gallery.service.WorkService;
 import com.artisan.solutions.gallery.web.dto.DtoConverter;
 import com.artisan.solutions.gallery.web.dto.WorkDto;
@@ -24,15 +23,15 @@ public class WorkController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Work create(@RequestBody WorkDto workDto) {
-        return workService.create(DtoConverter.convertWorkDtoToEntity(workDto));
+    public WorkDto create(@RequestBody WorkDto workDto) {
+        return DtoConverter.convertWorkToDto(workService.create(DtoConverter.convertWorkDtoToEntity(workDto)));
     }
 
     @GetMapping("/{id}")
     public WorkDto findById(@PathVariable long id) {
-        return DtoConverter.convertWorkToDto(
-                workService.findById(id)
-                           .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        return DtoConverter.convertWorkToDto(workService
+                                                     .findById(id)
+                                                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping
@@ -43,9 +42,7 @@ public class WorkController {
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public WorkDto update(@RequestBody WorkDto workDto) {
-        return DtoConverter.convertWorkToDto(
-                workService.update(DtoConverter.convertWorkDtoToEntity(workDto))
-        );
+        return DtoConverter.convertWorkToDto(workService.update(DtoConverter.convertWorkDtoToEntity(workDto)));
     }
 
     @DeleteMapping("/{id}")

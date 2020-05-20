@@ -1,6 +1,5 @@
 package com.artisan.solutions.gallery.web.controller;
 
-import com.artisan.solutions.gallery.persistence.model.Artist;
 import com.artisan.solutions.gallery.service.ArtistService;
 import com.artisan.solutions.gallery.web.dto.ArtistDto;
 import com.artisan.solutions.gallery.web.dto.DtoConverter;
@@ -24,15 +23,15 @@ public class ArtistController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Artist create(@RequestBody ArtistDto artistDto) {
-        return artistService.create(DtoConverter.convertArtistDtoToEntity(artistDto));
+    public ArtistDto create(@RequestBody ArtistDto artistDto) {
+        return DtoConverter.convertArtistToDto(artistService.create(DtoConverter.convertArtistDtoToEntity(artistDto)));
     }
 
     @GetMapping("/{id}")
     public ArtistDto findById(@PathVariable long id) {
-        return DtoConverter.convertArtistToDto(
-                artistService.findById(id)
-                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        return DtoConverter.convertArtistToDto(artistService
+                                                       .findById(id)
+                                                       .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping
