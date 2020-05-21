@@ -1,6 +1,5 @@
 package com.artisan.solutions.gallery.web.controller;
 
-import com.artisan.solutions.gallery.configuration.Constants;
 import com.artisan.solutions.gallery.service.ArtistService;
 import com.artisan.solutions.gallery.web.dto.ArtistDto;
 import com.artisan.solutions.gallery.web.dto.DtoConverter;
