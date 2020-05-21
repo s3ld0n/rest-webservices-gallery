@@ -34,8 +34,7 @@ public class WorkController {
     @GetMapping(Constants.ID)
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public WorkDto findById(@PathVariable long id) {
-        return dtoConverter.convertWorkToDto(workService
-                                                     .findById(id)
+        return dtoConverter.convertWorkToDto(workService.findById(id)
                                                      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
