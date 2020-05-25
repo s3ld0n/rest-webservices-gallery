@@ -32,14 +32,14 @@ public class WorkController {
     }
 
     @GetMapping(Constants.ID)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @PreAuthorize("isAuthenticated()")
     public WorkDto findById(@PathVariable long id) {
         return dtoConverter.convertWorkToDto(workService.findById(id)
                                                      .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @PreAuthorize("isAuthenticated()")
     public List<WorkDto> findAll() {
         return dtoConverter.convertAllWorksToDtos(workService.findAll());
     }

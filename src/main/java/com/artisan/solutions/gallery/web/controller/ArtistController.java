@@ -34,7 +34,7 @@ public class ArtistController {
     }
 
     @GetMapping(Constants.ID)
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @PreAuthorize("isAuthenticated()")
     public ArtistDto findById(@PathVariable long id) {
         return dtoConverter.convertArtistToDto(artistService
                                                        .findById(id)
@@ -42,7 +42,7 @@ public class ArtistController {
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+    @PreAuthorize("isAuthenticated()")
     public List<ArtistDto> findAll() {
         return dtoConverter.convertAllArtistToDtos(artistService.findAll());
     }
