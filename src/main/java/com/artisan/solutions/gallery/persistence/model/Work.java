@@ -19,10 +19,6 @@ public class Work {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "artist_id", nullable = false)
-    private Artist artist;
-
     @Column(name = "title", length = 50, nullable = false)
     private String title;
 

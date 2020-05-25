@@ -1,7 +1,7 @@
-package com.artisan.solutions.gallery.service.defaults;
+package com.artisan.solutions.gallery.service.impl;
 
 import com.artisan.solutions.gallery.persistence.model.Work;
-import com.artisan.solutions.gallery.persistence.repo.WorkRepo;
+import com.artisan.solutions.gallery.persistence.repository.WorkRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -19,10 +19,10 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class WorkServiceDefaultTest {
+public class WorkServiceImplTest {
 
     @InjectMocks
-    private WorkServiceDefault instance;
+    private WorkServiceImpl instance;
 
     @Mock
     private Work work1;
@@ -34,7 +34,7 @@ public class WorkServiceDefaultTest {
     private Work work3;
 
     @Mock
-    private WorkRepo repo;
+    private WorkRepository repo;
 
     @BeforeEach
     void setUp() {

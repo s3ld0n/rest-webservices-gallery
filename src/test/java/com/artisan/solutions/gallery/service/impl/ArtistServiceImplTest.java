@@ -1,7 +1,7 @@
-package com.artisan.solutions.gallery.service.defaults;
+package com.artisan.solutions.gallery.service.impl;
 
 import com.artisan.solutions.gallery.persistence.model.Artist;
-import com.artisan.solutions.gallery.persistence.repo.ArtistRepo;
+import com.artisan.solutions.gallery.persistence.repository.ArtistRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -19,13 +19,13 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-class ArtistServiceDefaultTest {
+class ArtistServiceImplTest {
 
     @InjectMocks
-    private ArtistServiceDefault instance;
+    private ArtistServiceImpl instance;
 
     @Mock
-    private ArtistRepo repo;
+    private ArtistRepository repo;
 
     @Mock
     private Artist artist1;
